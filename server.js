@@ -23,6 +23,7 @@ app.get('/kullanici', (req, res) => {
     });
 });
 
+
 app.post('/fikirkaydet', (req, res) => {
     const { tamIsim, emailAdres, fikirTuru, fikir } = req.body;
     Fikir.create({
@@ -31,8 +32,8 @@ app.post('/fikirkaydet', (req, res) => {
         fikirTuru,
         fikir
     }, err => {
-        if (err) throw err;
-        console.log("kaydedildi")
+        if (err) res.sendStatus(400);
+        res.sendStatus(200);
     })
 });
 
